@@ -1,0 +1,5 @@
+dist
+commitlint.config.js
+node_modules 
+changelog-config.js
+generate-changelog.js

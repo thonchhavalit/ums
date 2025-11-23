@@ -1,0 +1,25 @@
+.app-header{
+  height:64px;
+  display:flex;
+  align-items:center;
+  padding:0 20px;
+  background:#fff;
+  box-shadow:0 2px 8px rgba(0,0,0,0.06);
+}
+
+.header-left{ display:flex; align-items:center; gap:12px; }
+.header-logo{ width:40px; height:40px; border-radius:6px; }
+.header-title{ font-weight:700; color:#21409a; margin-left:8px; letter-spacing:0.6px }
+.menu-btn{ color:rgba(0,0,0,0.65); }
+
+.header-center{ flex:1; display:flex; justify-content:start }
+.header-search{ width:560px; max-width:70%; border-radius:6px }
+
+.header-right{ display:flex; align-items:center; }
+.profile{ display:flex; align-items:center; gap:8px; cursor:pointer }
+.profile-name{ margin-left:6px; color:#333 }
+
+@media (max-width:900px){
+  .header-search{ display:none }
+  .header-title{ display:none }
+}
