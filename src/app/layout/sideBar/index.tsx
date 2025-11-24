@@ -94,6 +94,25 @@ const Sidebar: React.FC<Props> = ({ collapsed: controlledCollapsed, onCollapse, 
 
   const onOpenChange = (keys: string[]) => setOpenKeys(keys);
 
+  const menuItems = items.map(i => {
+    if (i.children) {
+      return {
+        key: i.key,
+        icon: i.icon,
+        label: i.label,
+        children: i.children.map(c => ({
+          key: c.key,
+          label: <Link to={c.path}>{c.label}</Link>
+        }))
+      };
+    }
+    return {
+      key: i.key,
+      icon: i.icon,
+      label: <Link to={i.path ?? '/'}>{i.label}</Link>
+    };
+  });
+
   const renderMenu = (
     <Menu
       mode="inline"
@@ -102,23 +121,8 @@ const Sidebar: React.FC<Props> = ({ collapsed: controlledCollapsed, onCollapse, 
       openKeys={openKeys}
       onOpenChange={onOpenChange}
       className="app-menu"
-    >
-      {items.map(i =>
-        i.children ? (
-          <Menu.SubMenu key={i.key} icon={i.icon} title={i.label}>
-            {i.children!.map((c) => (
-              <Menu.Item key={c.key}>
-                <Link to={c.path}>{c.label}</Link>
-              </Menu.Item>
-            ))}
-          </Menu.SubMenu>
-        ) : (
-          <Menu.Item key={i.key} icon={i.icon}>
-            <Link to={i.path ?? '/'}>{i.label}</Link>
-          </Menu.Item>
-        ),
-      )}
-    </Menu>
+      items={menuItems}
+    />
   );
 
   const header = (
@@ -130,7 +134,13 @@ const Sidebar: React.FC<Props> = ({ collapsed: controlledCollapsed, onCollapse, 
 
   if (drawer) {
     return (
-      <Drawer open={!!visible} placement="left" onClose={() => onClose?.()} bodyStyle={{ padding: 0 }} width={260}>
+      <Drawer 
+        open={!!visible} 
+        placement="left" 
+        onClose={() => onClose?.()} 
+        styles={{ body: { padding: 0 } }} 
+        size={260}
+      >
         {header}
         {renderMenu}
       </Drawer>

@@ -40,7 +40,6 @@ const AppLayout: React.FC = () => {
   return (
     <Layout style={{ minHeight: '100vh' }}>
       <Navbar onToggle={handleToggle} />
-
       <Layout>
         <Sidebar
           drawer={isMobile}
@@ -49,8 +48,7 @@ const AppLayout: React.FC = () => {
           collapsed={collapsed}
           onCollapse={handleCollapse}
         />
-
-        <Content style={{ margin: '5px 24px 5px 24px', padding: '5px 5px 5px 5px' }}>
+        <Content style={{ margin: '5px 24px 5px 24px', padding: '5px' }}>
           <Breadcrumb items={breadcrumbItems} style={{ marginBottom: 12 }} />
           <Outlet />
         </Content>

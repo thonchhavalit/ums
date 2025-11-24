@@ -1,6 +1,12 @@
 import React from 'react';
 import { Table, Tag, Space, Button, Dropdown } from 'antd';
-import { EllipsisOutlined, EyeOutlined, EditOutlined, DeleteOutlined, PlusOutlined } from '@ant-design/icons';
+import {
+  EllipsisOutlined,
+  EyeOutlined,
+  EditOutlined,
+  DeleteOutlined,
+  PlusOutlined,
+} from '@ant-design/icons';
 import type { ColumnsType } from 'antd/es/table';
 
 import type { Student } from '../../../data/mockStudents';
@@ -38,9 +44,7 @@ const columns: ColumnsType<Student> = [
     title: 'Status',
     dataIndex: 'status',
     key: 'status',
-    render: (text: string) => (
-      <Tag color={statusColor(text)}>{text}</Tag>
-    ),
+    render: (text: string) => <Tag color={statusColor(text)}>{text}</Tag>,
   },
   {
     title: 'Action',
@@ -48,7 +52,7 @@ const columns: ColumnsType<Student> = [
     width: 120,
     render: (_, _record) => {
       const actionItems = [
-        { key: 'view', label: 'View', icon: <EyeOutlined /> },
+        { key: 'view', label: 'View', icon: <EyeOutlined />, style:{ color: 'blue'} },
         { key: 'edit', label: 'Edit', icon: <EditOutlined /> },
         { key: 'delete', label: 'Delete', icon: <DeleteOutlined /> },
       ];
@@ -56,7 +60,11 @@ const columns: ColumnsType<Student> = [
       return (
         <Space size="middle">
           <Dropdown menu={{ items: actionItems }} trigger={['click']}>
-            <Button icon={<EllipsisOutlined style={{borderRadius:50}}/>} />
+            <Button
+              icon={<EllipsisOutlined />}
+              className='action-button-style'
+              size='small'
+            />
           </Dropdown>
         </Space>
       );
@@ -74,15 +82,32 @@ const StudentTable: React.FC<Props> = ({ data, defaultPageSize = 25 }) => {
 
   return (
     <div>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          marginBottom: 16,
+        }}
+      >
         <h3 style={{ margin: 0 }}>Student List</h3>
-        <Button style={{backgroundColor:'var(--primary-700)', color: 'white'}} icon={<PlusOutlined />}>Add</Button>
+        <Button
+          className='button-style'
+          icon={<PlusOutlined />}
+        >
+          Add
+        </Button>
       </div>
 
       <Table<Student>
         columns={columns}
         dataSource={dataSource}
-        pagination={{ pageSize: defaultPageSize, showSizeChanger: true, pageSizeOptions: ['10', '25', '50'], showTotal: (total, range) => `${range[0]}-${range[1]} of ${total}` }}
+        pagination={{
+          pageSize: defaultPageSize,
+          showSizeChanger: true,
+          pageSizeOptions: ['10', '25', '50'],
+          showTotal: (total, range) => `${range[0]}-${range[1]} of ${total}`,
+        }}
         rowKey="key"
         bordered
         size="small"
