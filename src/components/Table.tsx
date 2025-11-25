@@ -9,8 +9,8 @@ import {
 } from '@ant-design/icons';
 import type { ColumnsType } from 'antd/es/table';
 
-import type { Student } from '../../../data/mockStudents';
-import { mockData } from '../../../data/mockStudents';
+import type { Student } from '../data/mockStudents';
+import { mockData } from '../data/mockStudents';
 
 const statusColor = (status: string) => {
   switch (status) {

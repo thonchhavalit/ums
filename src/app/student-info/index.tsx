@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 
-import { mockData } from '../../data/mockStudents';
+import { mockData } from '../../data/mockStudents.ts';
 import FlexibleFilter from '../../components/Filter.tsx';
 import { studentFilterConfig } from '../../config/filterConfigs.ts';
-
-import StudentTable from './page/Table';
+import StudentTable from '../../components/Table.tsx';
 
 
 function StudentPage(): React.ReactElement {
