@@ -1,16 +1,14 @@
 import React from 'react';
-import { Table, Tag, Space, Button, Dropdown } from 'antd';
-import {
-  EllipsisOutlined,
-  EyeOutlined,
-  EditOutlined,
-  DeleteOutlined,
-  PlusOutlined,
-} from '@ant-design/icons';
+import { Tag, Space, Button, Dropdown } from 'antd';
+import { EllipsisOutlined } from '@ant-design/icons';
 import type { ColumnsType } from 'antd/es/table';
 
-import type { Student } from '../data/mockStudents';
-import { mockData } from '../data/mockStudents';
+import type { Student } from '../../../../data/mockStudents';
+import { mockData } from '../../../../data/mockStudents';
+import GenericTable from '../../../../components/GenericTable';
+import editIcon from '../../../../assets/icons/edit.svg';
+import deleteIcon from '../../../../assets/icons/delete.svg';
+import viewIcon from '../../../../assets/icons/view.svg';
 
 const statusColor = (status: string) => {
   switch (status) {
@@ -52,9 +50,9 @@ const columns: ColumnsType<Student> = [
     width: 120,
     render: (_, _record) => {
       const actionItems = [
-        { key: 'view', label: 'View', icon: <EyeOutlined />, style:{ color: 'blue'} },
-        { key: 'edit', label: 'Edit', icon: <EditOutlined /> },
-        { key: 'delete', label: 'Delete', icon: <DeleteOutlined /> },
+        { key: 'view', label: 'View', icon: <img src={viewIcon} alt="view" />, },
+        { key: 'edit', label: 'Edit', icon: <img src={editIcon} alt="edit" /> },
+        { key: 'delete', label: 'Delete', icon: <img src={deleteIcon} alt="delete" /> },
       ];
 
       return (
@@ -81,38 +79,14 @@ const StudentTable: React.FC<Props> = ({ data, defaultPageSize = 25 }) => {
   const dataSource = data ?? mockData;
 
   return (
-    <div>
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          marginBottom: 16,
-        }}
-      >
-        <h3 style={{ margin: 0 }}>Student List</h3>
-        <Button
-          className='button-style'
-          icon={<PlusOutlined />}
-        >
-          Add
-        </Button>
-      </div>
-
-      <Table<Student>
-        columns={columns}
-        dataSource={dataSource}
-        pagination={{
-          pageSize: defaultPageSize,
-          showSizeChanger: true,
-          pageSizeOptions: ['10', '25', '50'],
-          showTotal: (total, range) => `${range[0]}-${range[1]} of ${total}`,
-        }}
-        rowKey="key"
-        bordered
-        size="small"
-      />
-    </div>
+    <GenericTable
+      title="Student List"
+      columns={columns}
+      data={dataSource}
+      pageSize={defaultPageSize}
+      onAdd={() => {}}
+      addLabel="Add"
+    />
   );
 };
 

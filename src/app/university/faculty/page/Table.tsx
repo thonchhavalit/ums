@@ -1,17 +1,11 @@
 import React from 'react';
-import { Table, Space, Button, Dropdown, Avatar } from 'antd';
-import {
-  EllipsisOutlined,
-  EyeOutlined,
-  EditOutlined,
-  DeleteOutlined,
-  PlusOutlined,
-  UserOutlined,
-} from '@ant-design/icons';
+import { Space, Button, Dropdown, Avatar } from 'antd';
+import { EllipsisOutlined, EyeOutlined, EditOutlined, DeleteOutlined, UserOutlined } from '@ant-design/icons';
 import type { ColumnsType } from 'antd/es/table';
 
-import type { Faculty } from '../data/mockFaculty';
-import { mockFacultyData } from '../data/mockFaculty';
+import type { Faculty } from '../../../../data/mockFaculty';
+import { mockFacultyData } from '../../../../data/mockFaculty';
+import GenericTable from '../../../../components/GenericTable';
 
 const columns: ColumnsType<Faculty> = [
   {
@@ -112,40 +106,14 @@ const FacultyTable: React.FC<Props> = ({ data, defaultPageSize = 25 }) => {
   const dataSource = data ?? mockFacultyData;
 
   return (
-    <div>
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          marginBottom: 16,
-        }}
-      >
-        <h3 style={{ margin: 0 }}>Faculties</h3>
-        <Button
-          className='button-style bg-gradient-primary'
-          icon={<PlusOutlined />}
-          style={{ color: 'white' }}
-        >
-          Add
-        </Button>
-      </div>
-
-      <Table<Faculty>
-        columns={columns}
-        dataSource={dataSource}
-        pagination={{
-          pageSize: defaultPageSize,
-          showSizeChanger: true,
-          pageSizeOptions: ['10', '25', '50'],
-          showTotal: (total, range) => `${range[0]}-${range[1]} of ${total}`,
-        }}
-        rowKey="key"
-        bordered
-        size="small"
-        scroll={{ x: 1200 }}
-      />
-    </div>
+    <GenericTable
+      title="Faculties"
+      columns={columns}
+      data={dataSource}
+      pageSize={defaultPageSize}
+      onAdd={() => {}}
+      addLabel="Add"
+    />
   );
 };
 

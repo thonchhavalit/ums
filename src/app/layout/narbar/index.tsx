@@ -1,7 +1,7 @@
 import React from 'react';
 import { Layout, Input, Avatar, Dropdown, Button, Space } from 'antd';
 import type { MenuProps } from 'antd';
-import { MenuOutlined, UserOutlined, LogoutOutlined } from '@ant-design/icons';
+import { UserOutlined, LogoutOutlined } from '@ant-design/icons';
 
 import './style.css';
 import logo from '../../../assets/logo.png';

@@ -7,7 +7,7 @@ export type FilterOption = {
   key: string;
   label: string;
   type: 'select' | 'input';
-  placeholder: string;
+  placeholder?: string;
   options?: { value: string; label: string }[];
   allowClear?: boolean;
 };
@@ -31,9 +31,7 @@ const FlexibleFilter: React.FC<Props> = ({
   config,
   onSearch
 }) => {
-  const [filterValues, setFilterValues] = useState<
-    Record<string, string | undefined>
-  >({});
+  const [filterValues, setFilterValues] = useState<Record<string, string | undefined>>({});
   const [keyword, setKeyword] = useState<string>('');
 
   const handleFilterChange = (key: string, value: string | undefined) => {
@@ -44,13 +42,12 @@ const FlexibleFilter: React.FC<Props> = ({
   };
 
   const handleSearch = () => {
-    const searchData = { ...filterValues };
+    const searchData = { ...filterValues } as Record<string, string | undefined> & { keyword?: string };
     if (config.enableSearch && keyword) {
       searchData.keyword = keyword;
     }
     onSearch?.(searchData);
   };
-
 
   const renderFilterItem = (filter: FilterOption) => {
     if (filter.type === 'select') {
@@ -86,18 +83,14 @@ const FlexibleFilter: React.FC<Props> = ({
       <Row gutter={[16, 16]} align="middle">
         <Col span={24}>
           <Row gutter={[12, 12]} align="middle">
-            {/* Title */}
             <Col xs={12} md={3} sm={4} style={{ textAlign: 'left' }}>
               <h2>
                 <strong>{config.title || 'Filtering'}</strong>
               </h2>
             </Col>
 
-            {/* Dynamic Filters */}
             {config.filters.map((filter) => {
-              const colSize = Math.floor(
-                18 / (config.filters.length + (config.enableSearch ? 1 : 0))
-              );
+              const colSize = Math.floor(18 / (config.filters.length + (config.enableSearch ? 1 : 0)));
               return (
                 <Col key={filter.key} xs={24} md={colSize} sm={colSize}>
                   {renderFilterItem(filter)}
@@ -105,13 +98,10 @@ const FlexibleFilter: React.FC<Props> = ({
               );
             })}
 
-            {/* Search Input (if enabled) */}
             {config.enableSearch && (
               <Col xs={24} md={6} sm={6}>
                 <Input
-                  placeholder={
-                    config.searchPlaceholder || 'Search any keyword...'
-                  }
+                  placeholder={config.searchPlaceholder || 'Search any keyword...'}
                   value={keyword}
                   onChange={(e) => setKeyword(e.target.value)}
                   style={{ width: '100%' }}
@@ -119,7 +109,6 @@ const FlexibleFilter: React.FC<Props> = ({
               </Col>
             )}
 
-            {/* Search Button */}
             <Col xs={24} md={3} sm={4} style={{ textAlign: 'right' }}>
               <Button
                 className="bg-gradient-primary"

@@ -46,7 +46,7 @@ export const StudentPageExample: React.FC = () => {
 // Faculty page example
 import { mockFacultyData } from '../data/mockFaculty';
 import { facultyFilterConfig } from '../config/filterConfigs';
-import FacultyTable from '../components/FacultyTable';
+import FacultyTable from '../app/university/faculty/page/Table';
 
 export const FacultyPageExample: React.FC = () => {
   const handleFacultyFilter = (filters: {

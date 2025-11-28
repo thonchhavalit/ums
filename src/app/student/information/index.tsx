@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 
-import { mockData } from '../../data/mockStudents.ts';
-import FlexibleFilter from '../../components/Filter.tsx';
-import { studentFilterConfig } from '../../config/filterConfigs.ts';
-import StudentTable from '../../components/Table.tsx';
+import { mockData } from '../../../data/mockStudents.ts';
+import FlexibleFilter from '../../../components/Filter.tsx';
+import { studentFilterConfig } from '../../../config/filterConfigs.ts';
+
+import StudentTable from './page/Table.tsx';
+// import StudentTable from '../../../components/Table.tsx';
 
 
 function StudentPage(): React.ReactElement {
@@ -40,14 +42,14 @@ function StudentPage(): React.ReactElement {
 
   return (
     <>
-      <div>
+      <section>
         <FlexibleFilter
           config={studentFilterConfig}
           onSearch={handleFilter}
           onViewChange={handleViewChange}
         />
-      </div>
-      <div
+      </section>
+      <main
         style={{
           background: '#fff',
           padding: 24,
@@ -56,7 +58,7 @@ function StudentPage(): React.ReactElement {
         }}
       >
         <StudentTable data={data} defaultPageSize={25} />
-      </div>
+      </main>
     </>
   );
 }

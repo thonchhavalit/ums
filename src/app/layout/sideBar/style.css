@@ -1,46 +1,77 @@
-.app-sider { background: #fff; border-right: 1px solid #eef0f3; overflow: hidden; position: relative; }
+.app-sider {
+  background: #fff;
+  border-right: 1px solid #eef0f3;
+  overflow: hidden;
+  position: relative;
+}
 
-.sider-top { padding: 18px 16px; display: flex; align-items: center; justify-content: space-between; }
-.sider-title { font-size: 12px; color: #9aa0b4; letter-spacing: 1px; }
-.collapse-btn { color: #6c757d; cursor: pointer }
+.sider-top {
+  padding: 18px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sider-title {
+  font-size: 12px;
+  color: #9aa0b4;
+  letter-spacing: 1px;
+}
+
+.collapse-btn {
+  color: #6c757d;
+  cursor: pointer
+}
 
 /* Menu base */
-.app-menu { border-right: none; padding: 8px 12px; box-sizing: border-box; }
+.app-menu {
+  border-right: none;
+  padding: 8px 12px;
+  box-sizing: border-box;
+}
 
 /* Submenu title styled as rounded blue pill */
-.app-menu .ant-menu-submenu-title, .app-menu .ant-menu-item {
+.app-menu .ant-menu-submenu-title,
+.app-menu .ant-menu-item {
   padding-left: 14px !important;
 }
 
 /* pill background for open/active submenu */
-.app-menu .ant-menu-submenu-open > .ant-menu-submenu-title,
-.app-menu .ant-menu-submenu-active > .ant-menu-submenu-title {
+.app-menu .ant-menu-submenu-open>.ant-menu-submenu-title,
+.app-menu .ant-menu-submenu-active>.ant-menu-submenu-title  {
   background: #eef6ff;
   color: #0b63d6;
   border-radius: 8px;
-  margin: 6px 0; /* remove horizontal margin to avoid overflow */
+  margin: 6px 0;
+  /* remove horizontal margin to avoid overflow */
   padding: 10px 12px !important;
   display: flex;
   align-items: center;
   gap: 10px;
   box-sizing: border-box;
-  width: 100%; /* fill available width inside padded .app-menu */
+  width: 100%;
+  /* fill available width inside padded .app-menu */
 }
 
-.app-menu .ant-menu-submenu-title .anticon { color: #0b63d6; font-size: 16px; }
+.app-menu .ant-menu-submenu-title .anticon {
+  color: #0b63d6;
+  font-size: 16px;
+}
 
 /* make submenu children look like bullets */
-.app-menu .ant-menu-submenu > .ant-menu {
+.app-menu .ant-menu-submenu>.ant-menu {
   background: transparent;
   margin-left: 18px;
   padding-left: 12px;
   overflow: hidden;
 }
+
 .app-menu .ant-menu-submenu .ant-menu-item {
   padding-left: 8px !important;
   color: #9aa0b4;
   font-size: 14px;
 }
+
 .app-menu .ant-menu-submenu .ant-menu-item::before {
   content: '•';
   margin-right: 8px;
@@ -58,12 +89,21 @@
 }
 
 /* collapsed state: hide titles and lists but keep icon centered */
-.app-sider.collapsed .ant-menu-submenu-title > .anticon { margin: 0 auto; display: block; }
-.app-sider.collapsed .ant-menu-submenu-title .ant-menu-title-content,
-.app-sider.collapsed .ant-menu-submenu .ant-menu { display: none !important; }
+.app-sider.collapsed .ant-menu-submenu-title>.anticon {
+  margin: 0 auto;
+  display: block;
+}
 
-@media (max-width:900px){
-  .app-sider{ position:fixed; z-index:1000 }
+.app-sider.collapsed .ant-menu-submenu-title .ant-menu-title-content,
+.app-sider.collapsed .ant-menu-submenu .ant-menu {
+  display: none !important;
+}
+
+@media (max-width:900px) {
+  .app-sider {
+    position: fixed;
+    z-index: 1000
+  }
 }
 
 /* when sider is collapsed make the title smaller and truncate */
@@ -74,4 +114,9 @@
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 100%;
+}
+
+.sider-icon {
+  font-size: 18px;
+  color: #9aa0b4;
 }

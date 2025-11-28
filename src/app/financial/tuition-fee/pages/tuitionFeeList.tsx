@@ -1,5 +1,6 @@
-import { Flex, Space, Table, Tag } from 'antd';
-import type { TableProps } from 'antd';
+import { Flex, Space, Tag } from 'antd';
+import type { ColumnsType } from 'antd/es/table';
+import GenericTable from '../../../../components/GenericTable';
 
 interface DataType {
   key: string;
@@ -9,7 +10,7 @@ interface DataType {
   tags: string[];
 }
 
-const columns: TableProps<DataType>['columns'] = [
+const columns: ColumnsType<DataType> = [
   {
     title: 'Name',
     dataIndex: 'name',
@@ -83,7 +84,7 @@ const data: DataType[] = [
 ];
 
 const TuitionFee = () => {
-  return <Table<DataType> columns={columns} dataSource={data} />;
+  return <GenericTable<DataType> columns={columns} data={data} />;
 };
 
 export default TuitionFee;

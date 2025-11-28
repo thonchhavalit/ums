@@ -85,6 +85,7 @@ export const departmentFilterConfig: FilterConfig = {
   ],
 };
 
+
 // Course page filter configuration
 export const courseFilterConfig: FilterConfig = {
   title: 'Course Filtering',
@@ -175,7 +176,7 @@ export const financialFilterConfig: FilterConfig = {
 export const facultyFilterConfig: FilterConfig = {
   title: 'Filtering',
   enableSearch: true,
-  searchPlaceholder: 'Search any keyword...',
+  searchPlaceholder: 'Search faculties...',
   buttonText: 'Search',
   enableViewToggle: false,
   filters: [
@@ -190,8 +191,6 @@ export const facultyFilterConfig: FilterConfig = {
         { value: 'Faculty of Law and Governance', label: 'Faculty of Law and Governance' },
         { value: 'Faculty of Economics and Business Studies', label: 'Faculty of Economics and Business Studies' },
         { value: 'Faculty of Science and Digital Studies', label: 'Faculty of Science and Digital Studies' },
-        { value: 'Faculty of Political Sciences and International Relations', label: 'Faculty of Political Sciences and International Relations' },
-        { value: 'Faculty of Science', label: 'Faculty of Science' },
       ],
     },
     {
@@ -202,10 +201,7 @@ export const facultyFilterConfig: FilterConfig = {
       allowClear: true,
       options: [
         { value: '1999', label: '1999' },
-        { value: '2000', label: '2000' },
-        { value: '2002', label: '2002' },
         { value: '2007', label: '2007' },
-        { value: '2009', label: '2009' },
         { value: '2024', label: '2024' },
       ],
     },

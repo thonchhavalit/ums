@@ -1,13 +1,18 @@
 import React, { useMemo, useState } from 'react';
 import { Layout, Drawer, Menu } from 'antd';
-import {
-  BankOutlined,
-  UsergroupAddOutlined,
-  IdcardOutlined,
-  DollarOutlined,
-  DashboardOutlined,
-} from '@ant-design/icons';
 import { Link, useLocation } from 'react-router-dom';
+
+import dashboardIcon from '../../../assets/icons/dashboard.svg';
+import umsLogo from '../../../assets/icons/university-ums.svg';
+import studentIcon from '../../../assets/icons/student.svg';
+import idCardIcon from '../../../assets/icons/id-card.svg';
+import financialIcon from '../../../assets/icons/financial.svg';
+// import { ReactComponent as DashboardIcon } from '../../../assets/icons/dashboard.svg';
+// import { ReactComponent as UmsLogo } from '../../../assets/icons/university-ums.svg';
+// import { ReactComponent as StudentIcon } from '../../../assets/icons/student.svg';
+// import { ReactComponent as IdCardIcon } from '../../../assets/icons/id-card.svg';
+// import { ReactComponent as FinancialIcon } from '../../../assets/icons/financial.svg';
+
 import './style.css';
 
 const { Sider } = Layout;
@@ -16,10 +21,13 @@ type Child = { key: string; label: string; path: string };
 type Item = { key: string; icon?: React.ReactNode; label: string; path?: string; children?: Child[] };
 
 const items: Item[] = [
-  { key: '/dashboard', icon: <DashboardOutlined />, label: 'Dashboard', path: '/dashboard' },
+  {
+    key: '/dashboard',
+    icon: <img src={dashboardIcon} alt="dashboard" className="sider-icon" />, label: 'Dashboard', path: '/dashboard'
+  },
   {
     key: 'university',
-    icon: <BankOutlined />,
+    icon: <img src={umsLogo} alt="university" className="sider-icon" />,
     label: 'University',
     children: [
       { key: '/university/faculties', label: 'Faculties', path: '/university/faculties' },
@@ -30,7 +38,7 @@ const items: Item[] = [
   },
   {
     key: 'student',
-    icon: <UsergroupAddOutlined />,
+    icon: <img src={studentIcon} alt="student" className="sider-icon" />,
     label: 'Student',
     children: [
       { key: '/student/registration', label: 'Registration', path: '/student/registration' },
@@ -40,7 +48,7 @@ const items: Item[] = [
   },
   {
     key: 'idcard',
-    icon: <IdcardOutlined />,
+    icon: <img src={idCardIcon} alt="id card" className="sider-icon" />,
     label: 'ID Card',
     children: [
       { key: '/idcard/list', label: 'ID Cards', path: '/idcard/list' },
@@ -49,7 +57,7 @@ const items: Item[] = [
   },
   {
     key: 'financial',
-    icon: <DollarOutlined />,
+    icon: <img src={financialIcon} alt="financial" className="sider-icon" />,
     label: 'Financial',
     children: [
       { key: '/financial/fees', label: 'Fees Management', path: '/financial/fees' },
@@ -68,7 +76,7 @@ type Props = {
   onClose?: () => void;
 };
 
-const Sidebar: React.FC<Props> = ({ collapsed: controlledCollapsed, onCollapse, drawer, visible, onClose }) => {
+const Sidebar: React.FC<Props> = ({ collapsed: controlledCollapsed, drawer, visible, onClose }) => {
   const location = useLocation();
   const pathname = location.pathname || '/dashboard';
 
@@ -127,18 +135,20 @@ const Sidebar: React.FC<Props> = ({ collapsed: controlledCollapsed, onCollapse, 
 
   const header = (
     <div className="sider-top">
-      <div className="sider-title">KHEMARAK UNIVERSITY</div>
-      
+      <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+        <div className="sider-title">KHEMARAK UNIVERSITY</div>
+      </div>
+
     </div>
   );
 
   if (drawer) {
     return (
-      <Drawer 
-        open={!!visible} 
-        placement="left" 
-        onClose={() => onClose?.()} 
-        styles={{ body: { padding: 0 } }} 
+      <Drawer
+        open={!!visible}
+        placement="left"
+        onClose={() => onClose?.()}
+        styles={{ body: { padding: 0 } }}
         size={260}
       >
         {header}
