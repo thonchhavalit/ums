@@ -7,11 +7,6 @@ import umsLogo from '../../../assets/icons/university-ums.svg';
 import studentIcon from '../../../assets/icons/student.svg';
 import idCardIcon from '../../../assets/icons/id-card.svg';
 import financialIcon from '../../../assets/icons/financial.svg';
-// import { ReactComponent as DashboardIcon } from '../../../assets/icons/dashboard.svg';
-// import { ReactComponent as UmsLogo } from '../../../assets/icons/university-ums.svg';
-// import { ReactComponent as StudentIcon } from '../../../assets/icons/student.svg';
-// import { ReactComponent as IdCardIcon } from '../../../assets/icons/id-card.svg';
-// import { ReactComponent as FinancialIcon } from '../../../assets/icons/financial.svg';
 
 import './style.css';
 
@@ -23,11 +18,12 @@ type Item = { key: string; icon?: React.ReactNode; label: string; path?: string;
 const items: Item[] = [
   {
     key: '/dashboard',
-    icon: <img src={dashboardIcon} alt="dashboard" className="sider-icon" />, label: 'Dashboard', path: '/dashboard'
+    icon: <img src={dashboardIcon} alt="dashboard" className="sider-icon"  style={{width: '15px', height: '15px'}}/>,
+    label: 'Dashboard', path: '/dashboard'
   },
   {
     key: 'university',
-    icon: <img src={umsLogo} alt="university" className="sider-icon" />,
+    icon: <img src={umsLogo} alt="university" className="sider-icon" style={{width: '15px', height: '15px' }} />,
     label: 'University',
     children: [
       { key: '/university/faculties', label: 'Faculties', path: '/university/faculties' },
@@ -38,7 +34,7 @@ const items: Item[] = [
   },
   {
     key: 'student',
-    icon: <img src={studentIcon} alt="student" className="sider-icon" />,
+    icon: <img src={studentIcon} alt="student" className="sider-icon" style={{width: '15px', height: '15px' }} />,
     label: 'Student',
     children: [
       { key: '/student/registration', label: 'Registration', path: '/student/registration' },
@@ -48,7 +44,7 @@ const items: Item[] = [
   },
   {
     key: 'idcard',
-    icon: <img src={idCardIcon} alt="id card" className="sider-icon" />,
+    icon: <img src={idCardIcon} alt="id card" className="sider-icon" style={{width: '15px', height: '15px' }} />,
     label: 'ID Card',
     children: [
       { key: '/idcard/list', label: 'ID Cards', path: '/idcard/list' },
@@ -57,7 +53,7 @@ const items: Item[] = [
   },
   {
     key: 'financial',
-    icon: <img src={financialIcon} alt="financial" className="sider-icon" />,
+    icon: <img src={financialIcon} alt="financial" className="sider-icon" style={{width: '15px', height: '15px' }} />,
     label: 'Financial',
     children: [
       { key: '/financial/fees', label: 'Fees Management', path: '/financial/fees' },

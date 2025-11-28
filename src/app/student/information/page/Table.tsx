@@ -54,7 +54,6 @@ const columns: ColumnsType<Student> = [
         { key: 'edit', label: 'Edit', icon: <img src={editIcon} alt="edit" /> },
         { key: 'delete', label: 'Delete', icon: <img src={deleteIcon} alt="delete" /> },
       ];
-
       return (
         <Space size="middle">
           <Dropdown menu={{ items: actionItems }} trigger={['click']}>
