@@ -109,11 +109,11 @@ const FacultyTable: React.FC<Props> = ({ data, defaultPageSize = 25 }) => {
 
   return (
     <GenericTable
-      title="Faculties"
+      title="Majors"
       columns={columns}
       data={dataSource}
       pageSize={defaultPageSize}
-      onAdd={() => navigate('/university/faculties/add')}
+      onAdd={() => navigate('/university/majors/add')}
       addLabel="Add"
     />
   );

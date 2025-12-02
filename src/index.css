@@ -13,7 +13,8 @@
   /* Gradient backgrounds */
   --gradient-primary: linear-gradient(135deg, #0575e6 0%, #021b79 100%);
   --gradient-blue: linear-gradient(135deg, #0d6efd 0%, #0a58ca 100%);
-
+  --gradient-red: linear-gradient(135deg, #E00004 0%, #b02a37 100%);
+  
   /* Accent and semantic colors */
   --accent: #FBB040;
   /* warm yellow */
@@ -72,6 +73,10 @@ body {
 .button-style {
   color: white;
   background: var(--gradient-primary);
+}
+.cancel-button-style {
+  color: white;
+  background: var(--gradient-red);
 }
 
 .action-button-style {

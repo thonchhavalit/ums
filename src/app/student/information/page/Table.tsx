@@ -72,6 +72,7 @@ const columns: ColumnsType<Student> = [
 type Props = {
   data?: Student[];
   defaultPageSize?: number;
+  style?: React.CSSProperties;
 };
 
 const StudentTable: React.FC<Props> = ({ data, defaultPageSize = 25 }) => {
@@ -79,11 +80,11 @@ const StudentTable: React.FC<Props> = ({ data, defaultPageSize = 25 }) => {
 
   return (
     <GenericTable
-      title="Student List"
+      title="Student List"  
       columns={columns}
       data={dataSource}
       pageSize={defaultPageSize}
-      onAdd={() => {}}
+      onAdd={() => { }}
       addLabel="Add"
     />
   );

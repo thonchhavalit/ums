@@ -4,11 +4,22 @@ import { EllipsisOutlined, EyeOutlined, EditOutlined, DeleteOutlined, UserOutlin
 import type { ColumnsType } from 'antd/es/table';
 import { useNavigate } from 'react-router-dom';
 
-import type { Faculty } from '../../../../data/mockFaculty';
-import { mockFacultyData } from '../../../../data/mockFaculty';
 import GenericTable from '../../../../components/GenericTable';
+import { mockDepartments } from '../../../../data/mockData';
 
-const columns: ColumnsType<Faculty> = [
+type Dept = {
+  key: string;
+  no: string;
+  head: string;
+  departmentName: string;
+  faculty: string;
+  code: string;
+  students: number;
+  year: number;
+  majors: number;
+};
+
+const columns: ColumnsType<Dept> = [
   {
     title: 'No',
     dataIndex: 'no',
@@ -17,43 +28,42 @@ const columns: ColumnsType<Faculty> = [
     align: 'center',
   },
   {
-    title: 'Dean',
-    dataIndex: 'dean',
-    key: 'dean',
-    width: 150,
-    render: (dean: string) => (
+    title: 'Head of Department',
+    dataIndex: 'head',
+    key: 'head',
+    width: 180,
+    render: (head: string) => (
       <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
         <Avatar size="small" icon={<UserOutlined />} />
-        <span>{dean}</span>
+        <span>{head}</span>
       </div>
     ),
   },
   {
-    title: 'Faculty Name',
-    dataIndex: 'facultyName',
-    key: 'facultyName',
-    sorter: (a, b) => a.facultyName.localeCompare(b.facultyName),
-    width: 350,
+    title: 'Department Name',
+    dataIndex: 'departmentName',
+    key: 'departmentName',
+    width: 300,
   },
   {
-    title: 'Email',
-    dataIndex: 'email',
-    key: 'email',
-    width: 200,
+    title: 'Faculty',
+    dataIndex: 'faculty',
+    key: 'faculty',
+    width: 240,
   },
   {
-    title: 'Phone Number',
-    dataIndex: 'phoneNumber',
-    key: 'phoneNumber',
-    width: 150,
-  },
-  {
-    title: 'Student',
-    dataIndex: 'student',
-    key: 'student',
+    title: 'Dep.Code',
+    dataIndex: 'code',
+    key: 'code',
     width: 100,
     align: 'center',
-    sorter: (a, b) => a.student - b.student,
+  },
+  {
+    title: 'Students',
+    dataIndex: 'students',
+    key: 'students',
+    width: 100,
+    align: 'center',
   },
   {
     title: 'Year',
@@ -61,13 +71,12 @@ const columns: ColumnsType<Faculty> = [
     key: 'year',
     width: 100,
     align: 'center',
-    sorter: (a, b) => a.year - b.year,
   },
   {
-    title: 'Departments',
-    dataIndex: 'departments',
-    key: 'departments',
-    width: 120,
+    title: 'Majors',
+    dataIndex: 'majors',
+    key: 'majors',
+    width: 100,
     align: 'center',
   },
   {
@@ -75,7 +84,7 @@ const columns: ColumnsType<Faculty> = [
     key: 'action',
     width: 80,
     fixed: 'right',
-    render: (_, _record) => {
+    render: (_: string, _record: Dept) => {
       const actionItems = [
         { key: 'view', label: 'View', icon: <EyeOutlined />, style: { color: 'blue' } },
         { key: 'edit', label: 'Edit', icon: <EditOutlined /> },
@@ -85,12 +94,7 @@ const columns: ColumnsType<Faculty> = [
       return (
         <Space size="middle">
           <Dropdown menu={{ items: actionItems }} trigger={['click']}>
-            <Button
-              icon={<EllipsisOutlined />}
-              className='action-button-style'
-              size='small'
-              shape="circle"
-            />
+            <Button icon={<EllipsisOutlined />} className="action-button-style" size="small" shape="circle" />
           </Dropdown>
         </Space>
       );
@@ -98,25 +102,26 @@ const columns: ColumnsType<Faculty> = [
   },
 ];
 
+
 type Props = {
-  data?: Faculty[];
+  data?: Dept[];
   defaultPageSize?: number;
 };
 
-const FacultyTable: React.FC<Props> = ({ data, defaultPageSize = 25 }) => {
+const DepartmentTable: React.FC<Props> = ({ data, defaultPageSize = 25 }) => {
   const navigate = useNavigate();
-  const dataSource = data ?? mockFacultyData;
+  const dataSource = data ?? mockDepartments;
 
   return (
     <GenericTable
-      title="Faculties"
+      title="Departments"
       columns={columns}
       data={dataSource}
       pageSize={defaultPageSize}
-      onAdd={() => navigate('/university/faculties/add')}
+      onAdd={() => navigate('/university/departments/add')}
       addLabel="Add"
     />
   );
 };
 
-export default FacultyTable;
+export default DepartmentTable;

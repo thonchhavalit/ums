@@ -9,7 +9,9 @@ import IdCardPage from './app/student/id-card';
 import AppLayout from './app/layout';
 import DashboardPage from './app/dashboard';
 import FacultyPage from './app/university/faculty';
+import AddFacultyPage from './app/university/faculty/page/Add-Faculty';
 import DepartmentPage from './app/university/department';
+import AddDepartmentPage from './app/university/department/page/Add-Department';
 import MajorPage from './app/university/major';
 import CoursePage from './app/university/course';
 import FeeManagementPage from './app/financial/fee-management';
@@ -42,7 +44,9 @@ const AppRouter = () => {
 
             {/* University */}
             <Route path='/university/faculties' element={<FacultyPage />} />
+            <Route path='/university/faculties/add' element={<AddFacultyPage />} />
             <Route path='/university/departments' element={<DepartmentPage />} />
+            <Route path='/university/departments/add' element={<AddDepartmentPage />} />
             <Route path='/university/majors' element={<MajorPage />} />
             <Route path='/university/courses' element={<CoursePage />} />
           </Route>

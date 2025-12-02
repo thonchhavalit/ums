@@ -207,3 +207,38 @@ export const facultyFilterConfig: FilterConfig = {
     },
   ],
 };
+
+export const DepartmentFilterConfig: FilterConfig = {
+  title: 'Filtering',
+  enableSearch: true,
+  searchPlaceholder: 'Search departments...',
+  buttonText: 'Search',
+  enableViewToggle: false,
+  filters: [
+    {
+      key: 'faculty',
+      label: 'Faculty',
+      type: 'select',
+      placeholder: 'Select Faculty',
+      allowClear: true,
+      options: [
+        { value: 'Faculty of Educational Sciences', label: 'Faculty of Educational Sciences' },
+        { value: 'Faculty of Law and Governance', label: 'Faculty of Law and Governance' },
+        { value: 'Faculty of Economics and Business Studies', label: 'Faculty of Economics and Business Studies' },
+        { value: 'Faculty of Science and Digital Studies', label: 'Faculty of Science and Digital Studies' },
+      ],
+    },
+    {
+      key: 'year',
+      label: 'Year',
+      type: 'select',
+      placeholder: 'Select Year',
+      allowClear: true,
+      options: [
+        { value: '1999', label: '1999' },
+        { value: '2007', label: '2007' },
+        { value: '2024', label: '2024' },
+      ],
+    },
+  ],
+};
